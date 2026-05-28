@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leslie_predictor/screens/about_screen.dart';
 import 'package:provider/provider.dart';
 import 'viewmodels/input_form_viewmodel.dart';
 import 'viewmodels/leslie_calculator_viewmodel.dart';
@@ -13,7 +14,7 @@ void main() {
 }
 
 class LeslieApp extends StatelessWidget {
-  const LeslieApp({Key? key}) : super(key: key);
+  const LeslieApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +42,7 @@ class LeslieApp extends StatelessWidget {
           '/home': (context) => const HomeScreen(),
           '/input': (context) => const InputFormScreen(),
           '/result': (context) => const ResultScreen(),
+          '/about': (context) => const AboutScreen(),
         },
       ),
     );

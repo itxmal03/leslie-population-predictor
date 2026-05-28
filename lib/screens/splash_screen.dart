@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -66,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen>
     await Future.delayed(const Duration(milliseconds: 300));
     _progressController.forward();
     await Future.delayed(const Duration(milliseconds: 2200));
-  //  if (mounted) Navigator.of(context).pushReplacementNamed('/home');
+   if (mounted) Navigator.of(context).pushReplacementNamed('/home');
   }
 
   @override
@@ -100,7 +100,7 @@ class _SplashScreenState extends State<SplashScreen>
                 style: TextStyle(
                   fontSize: 280,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white.withOpacity(0.03),
+                  color: Colors.white.withValues(alpha:0.03),
                 ),
               ),
             ),
@@ -125,16 +125,16 @@ class _SplashScreenState extends State<SplashScreen>
                           height: 120,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.white.withOpacity(0.07),
+                            color: Colors.white.withValues(alpha:0.07),
                             border: Border.all(
-                              color: const Color(0xFF00BCD4).withOpacity(0.4),
+                              color: const Color(0xFF00BCD4).withValues(alpha:0.4),
                               width: 2,
                             ),
                             boxShadow: [
                               BoxShadow(
                                 color: const Color(
                                   0xFF00BCD4,
-                                ).withOpacity(0.25),
+                                ).withValues(alpha:0.25),
                                 blurRadius: 40,
                                 spreadRadius: 8,
                               ),
@@ -209,7 +209,7 @@ class _SplashScreenState extends State<SplashScreen>
                               'Age-Structured Population Modeling',
                               style: TextStyle(
                                 fontSize: 13,
-                                color: Colors.white.withOpacity(0.6),
+                                color: Colors.white.withValues(alpha:0.6),
                                 letterSpacing: 0.5,
                               ),
                             ),
@@ -224,12 +224,12 @@ class _SplashScreenState extends State<SplashScreen>
                                 border: Border.all(
                                   color: const Color(
                                     0xFF00BCD4,
-                                  ).withOpacity(0.4),
+                                  ).withValues(alpha:0.4),
                                 ),
                                 borderRadius: BorderRadius.circular(20),
                                 color: const Color(
                                   0xFF00BCD4,
-                                ).withOpacity(0.08),
+                                ).withValues(alpha:0.08),
                               ),
                               child: Text(
                                 'λ · Leslie Matrix Model',
@@ -237,7 +237,7 @@ class _SplashScreenState extends State<SplashScreen>
                                   fontSize: 11,
                                   color: const Color(
                                     0xFF00BCD4,
-                                  ).withOpacity(0.9),
+                                  ).withValues(alpha:0.9),
                                   letterSpacing: 1.0,
                                 ),
                               ),
@@ -263,7 +263,7 @@ class _SplashScreenState extends State<SplashScreen>
                                   borderRadius: BorderRadius.circular(4),
                                   child: LinearProgressIndicator(
                                     value: _progressController.value,
-                                    backgroundColor: Colors.white.withOpacity(
+                                    backgroundColor: Colors.white.withValues(alpha:
                                       0.08,
                                     ),
                                     valueColor:
@@ -281,7 +281,7 @@ class _SplashScreenState extends State<SplashScreen>
                             'Initializing model...',
                             style: TextStyle(
                               fontSize: 11,
-                              color: Colors.white.withOpacity(0.35),
+                              color: Colors.white.withValues(alpha:0.35),
                               letterSpacing: 0.5,
                             ),
                           ),
@@ -306,7 +306,7 @@ class _SplashScreenState extends State<SplashScreen>
                       'Powered by',
                       style: TextStyle(
                         fontSize: 11,
-                        color: Colors.white.withOpacity(0.45),
+                        color: Colors.white.withValues(alpha:0.45),
                         letterSpacing: 0.5,
                       ),
                       textAlign: TextAlign.center,
@@ -337,7 +337,7 @@ class _DotGridPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.white.withOpacity(0.04)
+      ..color = Colors.white.withValues(alpha:0.04)
       ..strokeWidth = 1;
 
     const spacing = 30.0;

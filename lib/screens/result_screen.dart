@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver_plus/image_gallery_saver_plus.dart';
@@ -154,7 +152,7 @@ class _ResultScreenState extends State<ResultScreen>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF0A1628).withOpacity(0.3),
+            color: const Color(0xFF0A1628).withValues(alpha:0.3),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),
@@ -170,7 +168,7 @@ class _ResultScreenState extends State<ResultScreen>
               style: TextStyle(
                 fontSize: 120,
                 fontWeight: FontWeight.bold,
-                color: Colors.white.withOpacity(0.04),
+                color: Colors.white.withValues(alpha:0.04),
               ),
             ),
           ),
@@ -183,10 +181,10 @@ class _ResultScreenState extends State<ResultScreen>
                     width: 48,
                     height: 48,
                     decoration: BoxDecoration(
-                      color: color.withOpacity(0.15),
+                      color: color.withValues(alpha:0.15),
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: color.withOpacity(0.4),
+                        color: color.withValues(alpha:0.4),
                         width: 1.5,
                       ),
                     ),
@@ -199,7 +197,7 @@ class _ResultScreenState extends State<ResultScreen>
                       Text(
                         'Growth Rate (λ)',
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.5),
+                          color: Colors.white.withValues(alpha:0.5),
                           fontSize: 12,
                         ),
                       ),
@@ -228,9 +226,9 @@ class _ResultScreenState extends State<ResultScreen>
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.15),
+                  color: color.withValues(alpha:0.15),
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: color.withOpacity(0.3)),
+                  border: Border.all(color: color.withValues(alpha:0.3)),
                 ),
                 child: Text(
                   'Population is ${status.toUpperCase()}',
@@ -247,7 +245,7 @@ class _ResultScreenState extends State<ResultScreen>
                 vm.getRecommendation(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.white.withOpacity(0.6),
+                  color: Colors.white.withValues(alpha:0.6),
                   fontSize: 12,
                   height: 1.6,
                 ),
@@ -338,7 +336,7 @@ class _ResultScreenState extends State<ResultScreen>
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha:0.05),
             blurRadius: 8,
             offset: const Offset(0, 3),
           ),
@@ -575,7 +573,7 @@ class _ResultScreenState extends State<ResultScreen>
                       dotData: const FlDotData(show: false),
                       belowBarData: BarAreaData(
                         show: true,
-                        color: colors[ageIdx % colors.length].withOpacity(0.03),
+                        color: colors[ageIdx % colors.length].withValues(alpha:0.03),
                       ),
                     ),
                   ),
@@ -630,7 +628,7 @@ class _ResultScreenState extends State<ResultScreen>
           children: [
             TableRow(
               decoration: BoxDecoration(
-                color: const Color(0xFF0A1628).withOpacity(0.05),
+                color: const Color(0xFF0A1628).withValues(alpha:0.05),
               ),
               children: List.generate(
                 result.leslieMatrix.length + 1,
@@ -684,8 +682,8 @@ class _ResultScreenState extends State<ResultScreen>
                         decoration: isHighlight && val > 0
                             ? BoxDecoration(
                                 color: i == 0
-                                    ? const Color(0xFF1565C0).withOpacity(0.1)
-                                    : const Color(0xFF2E7D32).withOpacity(0.1),
+                                    ? const Color(0xFF1565C0).withValues(alpha:0.1)
+                                    : const Color(0xFF2E7D32).withValues(alpha:0.1),
                                 borderRadius: BorderRadius.circular(4),
                               )
                             : null,
@@ -725,9 +723,10 @@ class _ResultScreenState extends State<ResultScreen>
         scrollDirection: Axis.horizontal,
         child: DataTable(
           headingRowHeight: 36,
-          dataRowHeight: 32,
+          dataRowMaxHeight: 32,
+          dataRowMinHeight: 32,
           headingRowColor: WidgetStateProperty.all(
-            const Color(0xFF0A1628).withOpacity(0.05),
+            const Color(0xFF0A1628).withValues(alpha:0.05),
           ),
           columns: [
             const DataColumn(
@@ -876,7 +875,7 @@ class _ResultScreenState extends State<ResultScreen>
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1565C0).withOpacity(0.1),
+                  color: const Color(0xFF1565C0).withValues(alpha:0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Icon(
@@ -958,7 +957,7 @@ class _ResultScreenState extends State<ResultScreen>
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha:0.05),
             blurRadius: 10,
             offset: const Offset(0, 3),
           ),
@@ -973,7 +972,7 @@ class _ResultScreenState extends State<ResultScreen>
                 width: 34,
                 height: 34,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF0A1628).withOpacity(0.07),
+                  color: const Color(0xFF0A1628).withValues(alpha:0.07),
                   borderRadius: BorderRadius.circular(9),
                 ),
                 child: Icon(icon, size: 17, color: const Color(0xFF0A1628)),

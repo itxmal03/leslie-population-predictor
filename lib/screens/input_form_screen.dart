@@ -6,7 +6,7 @@ import 'package:leslie_predictor/viewmodels/result_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class InputFormScreen extends StatefulWidget {
-  const InputFormScreen({Key? key}) : super(key: key);
+  const InputFormScreen({super.key});
 
   @override
   State<InputFormScreen> createState() => _InputFormScreenState();
@@ -26,8 +26,12 @@ class _InputFormScreenState extends State<InputFormScreen> {
 
   void _syncControllers(InputFormViewModel vm) {
     if (vm.ageGroups != _previousAgeGroups) {
-      for (var c in _birthRateControllers) c.dispose();
-      for (var c in _initialPopControllers) c.dispose();
+      for (var c in _birthRateControllers) {
+        c.dispose();
+      }
+      for (var c in _initialPopControllers) {
+        c.dispose();
+      }
 
       _birthRateControllers = List.generate(
         vm.ageGroups,
@@ -171,7 +175,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
           width: 36,
           height: 36,
           decoration: BoxDecoration(
-            color: const Color(0xFF0A1628).withOpacity(0.08),
+            color: const Color(0xFF0A1628).withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Icon(icon, size: 18, color: const Color(0xFF0A1628)),
@@ -287,7 +291,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF0A1628).withOpacity(0.08),
+                      color: const Color(0xFF0A1628).withValues(alpha:0.08),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
@@ -399,7 +403,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                         decoration: BoxDecoration(
                           color: _getSurvivalColor(
                             vm.survivalRates[i],
-                          ).withOpacity(0.1),
+                          ).withValues(alpha:0.1),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(
@@ -428,7 +432,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                       thumbColor: _getSurvivalColor(vm.survivalRates[i]),
                       overlayColor: _getSurvivalColor(
                         vm.survivalRates[i],
-                      ).withOpacity(0.15),
+                      ).withValues(alpha:0.15),
                     ),
                     child: Slider(
                       value: vm.survivalRates[i],
@@ -478,7 +482,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF2E7D32).withOpacity(0.08),
+                      color: const Color(0xFF2E7D32).withValues(alpha:0.08),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
@@ -595,7 +599,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   vertical: 6,
                 ),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF0B3D4A).withOpacity(0.08),
+                  color: const Color(0xFF0B3D4A).withValues(alpha:0.08),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
@@ -618,7 +622,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
               activeTrackColor: const Color(0xFF0B3D4A),
               inactiveTrackColor: Colors.grey.shade200,
               thumbColor: const Color(0xFF0B3D4A),
-              overlayColor: const Color(0xFF0B3D4A).withOpacity(0.15),
+              overlayColor: const Color(0xFF0B3D4A).withValues(alpha:0.15),
             ),
             child: Slider(
               value: vm.yearsToPredict.toDouble(),
@@ -651,9 +655,9 @@ class _InputFormScreenState extends State<InputFormScreen> {
       duration: const Duration(milliseconds: 300),
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: const Color(0xFFC62828).withOpacity(0.06),
+        color: const Color(0xFFC62828).withValues(alpha:0.06),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0xFFC62828).withOpacity(0.3)),
+        border: Border.all(color: const Color(0xFFC62828).withValues(alpha:0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -697,7 +701,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha:0.08),
             blurRadius: 12,
             offset: const Offset(0, -4),
           ),
@@ -770,7 +774,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha:0.05),
             blurRadius: 10,
             offset: const Offset(0, 3),
           ),
