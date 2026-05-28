@@ -73,7 +73,6 @@ class _InputFormScreenState extends State<InputFormScreen> {
           _syncControllers(vm);
           return Column(
             children: [
-              // Top progress strip
               _buildProgressStrip(vm),
               Expanded(
                 child: SingleChildScrollView(
@@ -96,7 +95,6 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   ),
                 ),
               ),
-              // Sticky bottom button
               _buildStickyCalculateButton(context, vm),
             ],
           );
@@ -118,15 +116,19 @@ class _InputFormScreenState extends State<InputFormScreen> {
     if (hasPopulation) steps++;
 
     return Container(
-      color: const Color(0xFF0D2137),
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
+      ),
       child: Row(
         children: [
           Text(
             'Setup Progress',
             style: TextStyle(
-              color: Colors.white.withOpacity(0.6),
+              color: Colors.grey.shade600,
               fontSize: 11,
+              fontWeight: FontWeight.w500,
             ),
           ),
           const SizedBox(width: 12),
@@ -135,9 +137,9 @@ class _InputFormScreenState extends State<InputFormScreen> {
               borderRadius: BorderRadius.circular(4),
               child: LinearProgressIndicator(
                 value: steps / 3,
-                backgroundColor: Colors.white.withOpacity(0.1),
+                backgroundColor: Colors.grey.shade200,
                 valueColor: const AlwaysStoppedAnimation<Color>(
-                  Color(0xFF00BCD4),
+                  Color(0xFF4CAF50),
                 ),
                 minHeight: 4,
               ),
@@ -147,7 +149,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
           Text(
             '$steps/3',
             style: const TextStyle(
-              color: Color(0xFF00BCD4),
+              color: Color(0xFF4CAF50),
               fontSize: 11,
               fontWeight: FontWeight.bold,
             ),
@@ -233,12 +235,12 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   height: 32,
                   decoration: BoxDecoration(
                     color: selected
-                        ? const Color(0xFF1565C0)
+                        ? const Color(0xFF0B3D4A)
                         : Colors.grey.shade100,
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
                       color: selected
-                          ? const Color(0xFF1565C0)
+                          ? const Color(0xFF0B3D4A)
                           : Colors.grey.shade300,
                     ),
                   ),
@@ -285,7 +287,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF1565C0).withOpacity(0.08),
+                      color: const Color(0xFF0A1628).withOpacity(0.08),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
@@ -293,7 +295,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF1565C0),
+                        color: Color(0xFF0A1628),
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -323,7 +325,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: const BorderSide(
-                            color: Color(0xFF1565C0),
+                            color: Color(0xFF0A1628),
                             width: 1.5,
                           ),
                         ),
@@ -732,7 +734,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
             }
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF1565C0),
+            backgroundColor: const Color(0xFF0B3D4A),
             foregroundColor: Colors.white,
             elevation: 0,
             shape: RoundedRectangleBorder(
