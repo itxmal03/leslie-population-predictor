@@ -12,10 +12,31 @@ class _AboutScreenState extends State<AboutScreen>
     with TickerProviderStateMixin {
   late Animation<double> _heroFade;
   late Animation<Offset> _heroSlide;
+  late AnimationController _heroController;
 
   @override
   void initState() {
     super.initState();
+
+    _heroController = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    );
+
+    _heroFade = CurvedAnimation(parent: _heroController, curve: Curves.easeIn);
+
+    _heroSlide = Tween<Offset>(
+      begin: const Offset(0, 0.06),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(parent: _heroController, curve: Curves.easeOut));
+
+    _heroController.forward();
+  }
+
+  @override
+  void dispose() {
+    _heroController.dispose();
+    super.dispose();
   }
 
   @override
