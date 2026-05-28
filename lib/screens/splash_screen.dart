@@ -66,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen>
     await Future.delayed(const Duration(milliseconds: 300));
     _progressController.forward();
     await Future.delayed(const Duration(milliseconds: 2200));
-     if (mounted) Navigator.of(context).pushReplacementNamed('/home');
+  //  if (mounted) Navigator.of(context).pushReplacementNamed('/home');
   }
 
   @override
@@ -140,10 +140,46 @@ class _SplashScreenState extends State<SplashScreen>
                               ),
                             ],
                           ),
-                          child: ClipOval(
-                            child: Image.asset(
-                              'assets/logo.png',
-                              fit: BoxFit.cover,
+
+                          child: // Replace the ClipOval Image.asset block with:
+                          Center(
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                // Inner fill
+                                Container(
+                                  width: 116,
+                                  height: 116,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    gradient: const RadialGradient(
+                                      colors: [
+                                        Color(0xFF0D2F45),
+                                        Color(0xFF0A1628),
+                                      ],
+                                      radius: 0.8,
+                                    ),
+                                  ),
+                                ),
+                                // λ symbol
+                                const Text(
+                                  'λ',
+                                  style: TextStyle(
+                                    fontSize: 58,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    height: 1.0,
+                                  ),
+                                ),
+                                // Cyan arc accent (top-right quadrant)
+                                SizedBox(
+                                  width: 116,
+                                  height: 116,
+                                  child: CustomPaint(
+                                    painter: _LogoArcPainter(),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -314,4 +350,40 @@ class _DotGridPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+class _LogoArcPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = Offset(size.width / 2, size.height / 2);
+    final radius = size.width / 2 - 3;
+
+    // Main cyan arc (270 degrees, leaving a gap at bottom-left)
+    final arcPaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.5
+      ..strokeCap = StrokeCap.round
+      ..color = const Color(0xFF00BCD4);
+
+    canvas.drawArc(
+      Rect.fromCircle(center: center, radius: radius),
+      -2.4, // start angle
+      5.5, // sweep (almost full circle)
+      false,
+      arcPaint,
+    );
+
+    // Bright dot at arc end
+    final dotPaint = Paint()
+      ..color = const Color(0xFF00BCD4)
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(
+      Offset(center.dx - 10, center.dy + radius - 1),
+      3.5,
+      dotPaint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter old) => false;
 }
